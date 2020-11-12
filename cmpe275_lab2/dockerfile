@@ -1,0 +1,4 @@
+FROM openjdk:8
+EXPOSE 8080
+COPY /target/cmpe275_lab2-1.0-SNAPSHOT.jar /game.jar
+ENTRYPOINT ["java", "-jar","/game.jar"]
