@@ -22,8 +22,9 @@ public class Sponsor {
 
   @OneToMany
   @JoinTable(name = "player",
-    joinColumns = {@JoinColumn(name = "id", referencedColumnName = "id")},
-    inverseJoinColumns = {@JoinColumn(name = "id",
+    joinColumns = {@JoinColumn(name = "id", referencedColumnName =
+      "sponsor_id")},
+    inverseJoinColumns = {@JoinColumn(name = "sponsor_id",
       referencedColumnName = "id")})
   private List<Player> players;
 

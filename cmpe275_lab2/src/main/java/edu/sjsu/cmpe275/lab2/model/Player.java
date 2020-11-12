@@ -6,8 +6,6 @@ import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @Table(name = "player")
 @Setter
@@ -32,9 +30,13 @@ public class Player {
   @Column
   private String description;
 
-  @Transient
+  @ManyToOne
+  @JoinTable(name = "sponsor",
+    joinColumns = {@JoinColumn(name = "sponsor_id", referencedColumnName =
+      "id")},
+    inverseJoinColumns = {@JoinColumn(name = "id",
+      referencedColumnName = "sponsor_id")})
   private Sponsor sponsor;
-
 
 //  @OneToMany
 //  @JoinTable(name = "opponents",
