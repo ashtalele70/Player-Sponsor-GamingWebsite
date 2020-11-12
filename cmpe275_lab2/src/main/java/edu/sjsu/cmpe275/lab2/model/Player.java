@@ -1,14 +1,12 @@
 package edu.sjsu.cmpe275.lab2.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "player")
@@ -21,6 +19,7 @@ public class Player {
   @Column
   private long id;
 
+
   @Column
   private String firstname;
 
@@ -32,5 +31,16 @@ public class Player {
 
   @Column
   private String description;
+
+  @Transient
+  private Sponsor sponsor;
+
+
+//  @OneToMany
+//  @JoinTable(name = "opponents",
+//    joinColumns = {@JoinColumn(name = "id", referencedColumnName = "id")},
+//    inverseJoinColumns = {@JoinColumn(name = "player_id2",
+//      referencedColumnName = "player_id2")})
+//  private List<Player> opponents;
 
 }
