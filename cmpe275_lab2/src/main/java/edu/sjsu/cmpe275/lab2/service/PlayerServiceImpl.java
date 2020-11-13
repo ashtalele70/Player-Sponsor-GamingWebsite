@@ -12,7 +12,7 @@ public class PlayerServiceImpl implements PlayerService {
   PlayerDao playerDao;
 
   @Override
-  public Player getPlayerId(Long id) {
-    return playerDao.getPlayerId(id);
+  public Player getPlayerById(Long id) {
+    return playerDao.getPlayerById(id);
   }
 }

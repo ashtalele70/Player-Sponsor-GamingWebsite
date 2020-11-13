@@ -3,6 +3,7 @@ package edu.sjsu.cmpe275.lab2.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,8 +17,6 @@ public class Player {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column
   private long id;
-
-
   @Column
   private String firstname;
 
@@ -30,12 +29,14 @@ public class Player {
   @Column
   private String description;
 
-  @ManyToOne
-  @JoinTable(name = "sponsor",
-    joinColumns = {@JoinColumn(name = "sponsor_id", referencedColumnName =
-      "id")},
-    inverseJoinColumns = {@JoinColumn(name = "id",
-      referencedColumnName = "sponsor_id")})
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "sponsor_id")
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//  @JoinTable(name = "sponsor",
+//    joinColumns = {@JoinColumn(name = "sponsor_id", referencedColumnName =
+//      "id")})
+//    inverseJoinColumns = {@JoinColumn(name = "id",
+//      referencedColumnName = "sponsor_id")})
   private Sponsor sponsor;
 
 //  @OneToMany

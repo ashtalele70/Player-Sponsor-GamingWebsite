@@ -4,5 +4,5 @@ import edu.sjsu.cmpe275.lab2.model.Player;
 
 public interface PlayerService {
 
-  public Player getPlayerId(Long id);
+  public Player getPlayerById(Long id);
 }
