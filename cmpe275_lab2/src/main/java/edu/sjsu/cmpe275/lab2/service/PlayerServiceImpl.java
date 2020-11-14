@@ -15,4 +15,9 @@ public class PlayerServiceImpl implements PlayerService {
   public Player getPlayerById(Long id) {
     return playerDao.getPlayerById(id);
   }
+  
+  @Override
+  public Player createPlayer(String firstname, String lastname, String email, String description, Long sponsorId) {
+	  return playerDao.createPlayer(firstname, lastname, email, description, sponsorId);
+  }
 }
