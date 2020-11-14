@@ -1,14 +1,9 @@
 package edu.sjsu.cmpe275.lab2.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-@Setter
-@Getter
 public class Address {
 
   @Column
@@ -22,6 +17,7 @@ public class Address {
 
   @Column
   private String zip;
+
 
 public String getStreet() {
 	return street;
@@ -54,4 +50,5 @@ public String getZip() {
 public void setZip(String zip) {
 	this.zip = zip;
 }
+
 }

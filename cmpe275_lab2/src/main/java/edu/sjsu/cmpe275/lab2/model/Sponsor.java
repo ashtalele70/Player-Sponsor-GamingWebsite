@@ -1,16 +1,12 @@
 package edu.sjsu.cmpe275.lab2.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-
+import edu.sjsu.cmpe275.lab2.model.Address;
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "sponsor")
-@Setter
-@Getter
 public class Sponsor {
 
   @Id
@@ -23,7 +19,7 @@ public class Sponsor {
 
   @Column
   private String description;
-
+  
   @Embedded
   private Address address;
 
@@ -36,6 +32,7 @@ public class Sponsor {
 //    inverseJoinColumns = {@JoinColumn(name = "sponsor_id",
 //      referencedColumnName = "id")})
   private List<Player> players;
+
 
 public long getId() {
 	return id;
