@@ -15,4 +15,12 @@ public class SponsorServiceImpl implements SponsorService {
   public Sponsor getSponsorById(Long id) {
     return sponsorDao.getSponsorById(id);
   }
+
+@Override
+public void createSponsor(String name, String description, String street, String city, String state, String zip) {
+	
+	 sponsorDao.createSponsor(name,description,street,city,state,zip);
+}
+
+
 }
