@@ -1,2 +1,2 @@
-# Player-Sponsor-GamingWebsite
+# Gaming-Website
 A mini gaming website
