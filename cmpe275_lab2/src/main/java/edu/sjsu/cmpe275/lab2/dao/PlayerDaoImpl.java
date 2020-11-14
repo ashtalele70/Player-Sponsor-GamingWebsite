@@ -34,6 +34,12 @@ public class PlayerDaoImpl implements PlayerDao {
 	player.setLastname(lastname);
 	player.setEmail(email);
 	player.setDescription(description);
+	
+	Query<Sponsor> query = currentSession.createQuery("from Sponsor where id =: sponsorId", Sponsor.class)
+			.setParameter("sponsorId", sponsorId);
+	
+	player.setSponsor(query.getSingleResult());
+	
 	currentSession.save(player);
 	
 	return new Player();
