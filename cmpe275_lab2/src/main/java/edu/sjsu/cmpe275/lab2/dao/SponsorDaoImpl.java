@@ -40,7 +40,7 @@ public class SponsorDaoImpl implements SponsorDao {
 
 @Override
 public void createSponsor(String name, String description, String street, String city, String state, String zip) {
-	//Session currentSession=entityManager.unwrap(Session.class);
+	
 	Sponsor sponsor=new Sponsor();
 	Address address=new Address();
 	address.setStreet(street);
@@ -50,7 +50,7 @@ public void createSponsor(String name, String description, String street, String
 	sponsor.setName(name);
 	sponsor.setDescription(description);
 	sponsor.setAddress(address);
-	//currentSession.save(sponsor);
+	
 	entityManager.merge(sponsor);
 }
 
@@ -69,7 +69,11 @@ public void deleteSponsor(Long id) {
 		currentSession.remove(persistentInstance);
 	}
 	*/	
-	
+	Sponsor sponsor=new Sponsor();
+	List<Player> sponsoredPlayers=sponsor.getPlayers();
+	if (sponsoredPlayers !=null &  !sponsoredPlayers.isEmpty()) {
+			sponsoredPlayers.forEach((player) -> player.setSponsor(null));
+	}
 	Query query = entityManager.createQuery("delete from Sponsor where id=:id");
 	query.setParameter("id", id);
 	query.executeUpdate();

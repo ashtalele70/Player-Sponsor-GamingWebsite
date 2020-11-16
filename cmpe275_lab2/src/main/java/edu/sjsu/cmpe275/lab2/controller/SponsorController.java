@@ -32,4 +32,6 @@ public class SponsorController {
   public void deleteSponsor(@PathVariable Long id) {
 	   sponsorService.deleteSponsor(id);
   }
+  
+
 }
