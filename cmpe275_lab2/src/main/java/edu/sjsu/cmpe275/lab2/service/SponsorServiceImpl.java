@@ -24,17 +24,23 @@ public class SponsorServiceImpl implements SponsorService {
     return sponsorDao.getSponsorById(id);
   }
 
-@Override
-@Transactional
-public void createSponsor(String name, String description, String street, String city, String state, String zip) {
-	
-	 sponsorDao.createSponsor(name,description,street,city,state,zip);
-}
+  @Override
+  @Transactional
+  public Sponsor createSponsor(String name, String description, String street, String city, String state, String zip) {
+
+     return 	sponsorDao.createSponsor(name,description,street,city,state,zip);
+  }
+
+  @Override
+  @Transactional
+  public void deleteSponsor(Long id) {
+    sponsorDao.deleteSponsor(id);
+  }
 
 @Override
 @Transactional
-public void deleteSponsor(Long id) {
-	sponsorDao.deleteSponsor(id);
+public void updateSponsor(Long id,String name, String description, String street, String city, String state, String zip) {
+	sponsorDao.updateSponsor(id,name,description,street,city,state,zip);
 	
 }
 

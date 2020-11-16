@@ -6,7 +6,13 @@ public interface SponsorDao {
 
   Sponsor getSponsorById(Long id);
 
-  void createSponsor(String name, String description, String street, String city, String state, String zip);
+  Sponsor createSponsor(String name, String description, String street, String city
+    , String state, String zip);
   
   void deleteSponsor(Long id);
+  
+  void updateSponsor(Long id,String name, String description, String street, String city
+		    , String state, String zip);
+
+
 }

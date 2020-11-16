@@ -4,8 +4,10 @@ package edu.sjsu.cmpe275.lab2.model;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "player")
 public class Player {
 
@@ -25,18 +27,18 @@ public class Player {
   @Column(nullable=true)
   private String description;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(name = "sponsor_id")
-  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//  @JoinTable(name = "sponsor",
-//    joinColumns = {@JoinColumn(name = "sponsor_id", referencedColumnName =
-//      "id")})
-//    inverseJoinColumns = {@JoinColumn(name = "id",
-//      referencedColumnName = "sponsor_id")})
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","sponsor",
+    "players"})
   private Sponsor sponsor;
 
   public long getId() {
 	return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public String getFirstname() {
@@ -44,48 +46,38 @@ public class Player {
   }
 
   public void setFirstname(String firstname) {
-	this.firstname = firstname;
+	  this.firstname = firstname;
   }
 
   public String getLastname() {
-	return lastname;
+	  return lastname;
   }
 
   public void setLastname(String lastname) {
-	this.lastname = lastname;
+	  this.lastname = lastname;
   }
 
   public String getEmail() {
-	return email;
+	  return email;
   }
 
   public void setEmail(String email) {
-	this.email = email;
+	  this.email = email;
   }
 
   public String getDescription() {
-	return description;
+	  return description;
   }
 
   public void setDescription(String description) {
-	this.description = description;
+	  this.description = description;
   }
 
   public Sponsor getSponsor() {
-	return sponsor;
+	  return sponsor;
   }
 
   public void setSponsor(Sponsor sponsor) {
-	this.sponsor = sponsor;
+	  this.sponsor = sponsor;
   }
-
-//  @OneToMany
-//  @JoinTable(name = "opponents",
-//    joinColumns = {@JoinColumn(name = "id", referencedColumnName = "id")},
-//    inverseJoinColumns = {@JoinColumn(name = "player_id2",
-//      referencedColumnName = "player_id2")})
-//  private List<Player> opponents;
-  
-  
-
 }

@@ -22,15 +22,22 @@ public class SponsorController {
   }
   
   @PostMapping("/sponsor")
-  public void createSponsor(@RequestParam("name") String name, @RequestParam(name="description", required=false)
+  public Sponsor createSponsor(@RequestParam("name") String name, @RequestParam(name="description", required=false)
   String description, @RequestParam(name="street",required=false) String street, @RequestParam(name="city",required=false) String city,
   @RequestParam(name="state",required=false) String state,@RequestParam(name="zip",required=false) String zipCode){
-	   sponsorService.createSponsor(name,description,street,city,state,zipCode);
+	   return sponsorService.createSponsor(name,description,street,city,state,zipCode);
   }
   
   @DeleteMapping("/sponsor/{id}")
   public void deleteSponsor(@PathVariable Long id) {
 	   sponsorService.deleteSponsor(id);
+  }
+  
+  @PostMapping("/sponsor/{id}")
+  public void updateSponsor(@PathVariable Long id,@RequestParam("name") String name,@RequestParam(name="description", required=false) String description,
+		  @RequestParam(name="street",required=false) String street, @RequestParam(name="city",required=false) String city,
+		  @RequestParam(name="state",required=false) String state, @RequestParam(name="zip", required=false) String zipCode) {
+	sponsorService.updateSponsor(id,name,description,street,city,state,zipCode);
   }
   
 
