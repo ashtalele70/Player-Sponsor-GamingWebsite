@@ -1,5 +1,6 @@
 package edu.sjsu.cmpe275.lab2.dao;
 
+import edu.sjsu.cmpe275.lab2.exception.SponsorNotFoundException;
 import edu.sjsu.cmpe275.lab2.model.Address;
 import edu.sjsu.cmpe275.lab2.model.Player;
 import edu.sjsu.cmpe275.lab2.model.Sponsor;
@@ -23,6 +24,7 @@ public class SponsorDaoImpl implements SponsorDao {
   @Override
 	public Sponsor getSponsorById(Long id) {
 		Sponsor sponsor = entityManager.find(Sponsor.class, id);
+		if(sponsor == null) throw new SponsorNotFoundException("Sponsor not found");
 		return sponsor;
 	}
 

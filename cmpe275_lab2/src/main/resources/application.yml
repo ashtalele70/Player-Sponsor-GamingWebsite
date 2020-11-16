@@ -3,6 +3,10 @@ spring:
     url: jdbc:mysql://35.230.33.50:3306/game
     username: root
     password: SJSU@1234CMPE275
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
 #  jpa:
 #    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 #    hibernate:

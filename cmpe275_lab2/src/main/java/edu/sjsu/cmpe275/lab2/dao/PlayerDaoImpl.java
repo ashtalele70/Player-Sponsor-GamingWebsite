@@ -1,5 +1,6 @@
 package edu.sjsu.cmpe275.lab2.dao;
 
+import edu.sjsu.cmpe275.lab2.exception.PlayerNotFoundException;
 import edu.sjsu.cmpe275.lab2.model.Player;
 import edu.sjsu.cmpe275.lab2.model.Sponsor;
 
@@ -22,6 +23,7 @@ public class PlayerDaoImpl implements PlayerDao {
   @Override
   public Player getPlayerById(Long id) {
     Player player = entityManager.find(Player.class, id);
+    if(player == null) throw new PlayerNotFoundException("Player not found");
     return player;
   }
   
