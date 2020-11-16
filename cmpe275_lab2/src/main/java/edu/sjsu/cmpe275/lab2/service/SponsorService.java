@@ -8,5 +8,5 @@ public interface SponsorService {
 
   public void createSponsor(String name, String description, String street, String city, String state, String zip);
 
-
+  public void deleteSponsor(Long id);
 }
