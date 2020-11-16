@@ -10,5 +10,5 @@ public interface SponsorService {
 
   public void deleteSponsor(Long id);
   
-  public void updateSponsor(Long id,String name, String description, String street, String city, String state, String zip);
+  public Sponsor updateSponsor(Long id,String name, String description, String street, String city, String state, String zip);
 }

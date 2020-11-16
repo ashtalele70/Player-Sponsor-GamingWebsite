@@ -56,7 +56,7 @@ public class SponsorDaoImpl implements SponsorDao {
 	}
 	
 	@Override
-	public void updateSponsor(Long id,String name, String description, String street, String city, String state, String zip) {
+	public Sponsor updateSponsor(Long id,String name, String description, String street, String city, String state, String zip) {
 		Sponsor sponsor=entityManager.find(Sponsor.class, id);
 		sponsor.setName(name);
 		sponsor.setDescription(description);
@@ -66,7 +66,7 @@ public class SponsorDaoImpl implements SponsorDao {
 		address.setState(state);
 		address.setZip(zip);
 		
-		entityManager.merge(sponsor);
+		return entityManager.merge(sponsor);
 	}
 	
 	

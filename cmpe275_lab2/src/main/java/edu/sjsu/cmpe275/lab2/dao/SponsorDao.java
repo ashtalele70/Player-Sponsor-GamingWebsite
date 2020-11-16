@@ -11,7 +11,7 @@ public interface SponsorDao {
   
   void deleteSponsor(Long id);
   
-  void updateSponsor(Long id,String name, String description, String street, String city
+  Sponsor updateSponsor(Long id,String name, String description, String street, String city
 		    , String state, String zip);
 
 

@@ -39,8 +39,8 @@ public class SponsorServiceImpl implements SponsorService {
 
 @Override
 @Transactional
-public void updateSponsor(Long id,String name, String description, String street, String city, String state, String zip) {
-	sponsorDao.updateSponsor(id,name,description,street,city,state,zip);
+public Sponsor updateSponsor(Long id,String name, String description, String street, String city, String state, String zip) {
+	return sponsorDao.updateSponsor(id,name,description,street,city,state,zip);
 	
 }
 
