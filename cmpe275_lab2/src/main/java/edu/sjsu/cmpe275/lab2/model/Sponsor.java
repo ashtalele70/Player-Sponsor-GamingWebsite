@@ -1,11 +1,13 @@
 package edu.sjsu.cmpe275.lab2.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import edu.sjsu.cmpe275.lab2.model.Address;
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "sponsor")
 public class Sponsor {
 

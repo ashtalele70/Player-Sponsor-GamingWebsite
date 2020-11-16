@@ -4,8 +4,10 @@ package edu.sjsu.cmpe275.lab2.model;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "player")
 public class Player {
 
