@@ -10,7 +10,6 @@ import javax.persistence.Query;
 
 @Repository
 public class SponsorDaoImpl implements SponsorDao {
-
   
   private EntityManager entityManager;
  
@@ -18,34 +17,35 @@ public class SponsorDaoImpl implements SponsorDao {
   public SponsorDaoImpl(EntityManager theEntityManager) {
 		entityManager = theEntityManager;
 	}
+
   @Override
-	  public Sponsor getSponsorById(Long id) {
-			Sponsor sponsor = entityManager.find(Sponsor.class, id);
-	  	return sponsor;
-	  }
-  
+	public Sponsor getSponsorById(Long id) {
+		Sponsor sponsor = entityManager.find(Sponsor.class, id);
+		return sponsor;
+	}
 
+	@Override
+	public Sponsor createSponsor(String name, String description, String street,
+												 String city, String state, String zip) {
+		Sponsor sponsor=new Sponsor();
+		Address address=new Address();
+		address.setStreet(street);
+		address.setCity(city);
+		address.setState(state);
+		address.setZip(zip);
+		sponsor.setName(name);
+		sponsor.setDescription(description);
+		sponsor.setAddress(address);
+		Sponsor dbSponsor = entityManager.merge(sponsor);
 
-@Override
-public void createSponsor(String name, String description, String street, String city, String state, String zip) {
-	Sponsor sponsor=new Sponsor();
-	Address address=new Address();
-	address.setStreet(street);
-	address.setCity(city);
-	address.setState(state);
-	address.setZip(zip);
-	sponsor.setName(name);
-	sponsor.setDescription(description);
-	sponsor.setAddress(address);
-	entityManager.merge(sponsor);
-}
+		return dbSponsor;
+	}
 
+	@Override
+	public void deleteSponsor(Long id) {
+		Query query = entityManager.createQuery("delete from Sponsor where id=:id");
+		query.setParameter("id", id);
+		query.executeUpdate();
+	}
 
-
-@Override
-public void deleteSponsor(Long id) {
-	Query query = entityManager.createQuery("delete from Sponsor where id=:id");
-	query.setParameter("id", id);
-	query.executeUpdate();
-}
 }

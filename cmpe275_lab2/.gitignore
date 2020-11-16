@@ -70,3 +70,7 @@ tmp/
 .history
 .idea_modules
 RUNNING_PID
+
+.project
+.classpath
+

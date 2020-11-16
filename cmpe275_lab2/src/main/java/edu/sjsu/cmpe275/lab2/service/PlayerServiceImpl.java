@@ -5,6 +5,8 @@ import edu.sjsu.cmpe275.lab2.model.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class PlayerServiceImpl implements PlayerService {
 
@@ -17,6 +19,7 @@ public class PlayerServiceImpl implements PlayerService {
   }
   
   @Override
+  @Transactional
   public Player createPlayer(String firstname, String lastname, String email, String description, Long sponsorId) {
 	  return playerDao.createPlayer(firstname, lastname, email, description, sponsorId);
   }
