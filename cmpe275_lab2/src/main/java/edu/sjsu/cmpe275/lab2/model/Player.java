@@ -28,7 +28,7 @@ public class Player {
   private String description;
 
   @ManyToOne
-  @JoinColumn(name = "sponsor_id")
+  @JoinColumn(name = "sponsor_id", nullable = true)
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","sponsor",
     "players"})
   private Sponsor sponsor;

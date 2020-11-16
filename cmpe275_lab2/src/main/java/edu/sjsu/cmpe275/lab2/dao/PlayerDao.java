@@ -7,4 +7,8 @@ public interface PlayerDao {
   Player getPlayerById(Long id);
   
   Player createPlayer(String firstname, String lastname, String email, String description, Long sponsorId);
+  
+  Player updatePlayer(Long id, String firstname, String lastname, String email, String description, Long sponsorId);
+  
+  void deletePlayer(Long id);
 }

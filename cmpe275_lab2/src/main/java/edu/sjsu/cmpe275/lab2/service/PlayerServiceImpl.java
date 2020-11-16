@@ -23,4 +23,16 @@ public class PlayerServiceImpl implements PlayerService {
   public Player createPlayer(String firstname, String lastname, String email, String description, Long sponsorId) {
 	  return playerDao.createPlayer(firstname, lastname, email, description, sponsorId);
   }
+  
+  @Override
+  @Transactional
+  public Player updatePlayer(Long id, String firstname, String lastname, String email, String description, Long sponsorId) {
+	  return playerDao.updatePlayer(id, firstname, lastname, email, description, sponsorId);
+  }
+  
+  @Override
+  @Transactional
+  public void deletePlayer(Long id) {
+	  playerDao.deletePlayer(id);
+  }
 }
