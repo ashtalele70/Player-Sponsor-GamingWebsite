@@ -44,7 +44,7 @@ public class SponsorDaoImpl implements SponsorDao {
 	}
 
 	@Override
-	public void deleteSponsor(Long id) {
+	public Sponsor deleteSponsor(Long id) {
 		Sponsor sponsor=entityManager.find(Sponsor.class, id);
 		List<Player> sponsoredPlayers=sponsor.getPlayers();
 		if (sponsoredPlayers !=null && !sponsoredPlayers.isEmpty()) {
@@ -53,6 +53,8 @@ public class SponsorDaoImpl implements SponsorDao {
 		Query query = entityManager.createQuery("delete from Sponsor where id=:id");
 		query.setParameter("id", id);
 		query.executeUpdate();
+		
+		return sponsor;
 	}
 	
 	@Override
@@ -65,8 +67,8 @@ public class SponsorDaoImpl implements SponsorDao {
 		address.setCity(city);
 		address.setState(state);
 		address.setZip(zip);
-		
-		return entityManager.merge(sponsor);
+		Sponsor dbSponsor=entityManager.merge(sponsor);
+		return dbSponsor;
 	}
 	
 	

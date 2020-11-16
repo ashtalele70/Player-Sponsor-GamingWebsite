@@ -33,8 +33,8 @@ public class SponsorServiceImpl implements SponsorService {
 
   @Override
   @Transactional
-  public void deleteSponsor(Long id) {
-    sponsorDao.deleteSponsor(id);
+  public Sponsor deleteSponsor(Long id) {
+    return sponsorDao.deleteSponsor(id);
   }
 
 @Override

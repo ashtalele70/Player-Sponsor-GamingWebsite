@@ -29,8 +29,8 @@ public class SponsorController {
   }
   
   @DeleteMapping("/sponsor/{id}")
-  public void deleteSponsor(@PathVariable Long id) {
-	   sponsorService.deleteSponsor(id);
+  public Sponsor deleteSponsor(@PathVariable Long id) {
+	   return sponsorService.deleteSponsor(id);
   }
   
   @PostMapping("/sponsor/{id}")
