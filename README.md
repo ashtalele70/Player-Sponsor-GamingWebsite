@@ -1,2 +1,2 @@
-# Gaming-Website
+# ProGaming
 A mini gaming website
