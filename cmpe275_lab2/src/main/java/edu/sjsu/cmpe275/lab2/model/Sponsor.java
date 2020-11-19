@@ -25,7 +25,8 @@ public class Sponsor {
   private Address address;
 
   @OneToMany(mappedBy = "sponsor")
-  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","sponsor"})
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","sponsor",
+    "opponents"})
   private List<Player> players;
 
   public long getId() {
