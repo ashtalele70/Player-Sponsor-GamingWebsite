@@ -50,7 +50,9 @@ public class PlayerDaoImpl implements PlayerDao {
 	player.setFirstname(firstname);
 	player.setLastname(lastname);
 	player.setEmail(email);
-	player.setDescription(description);
+	if(description != null && !description.isEmpty()) {
+		player.setDescription(description);
+	}	
 	if(sponsorId != null) {
 		Sponsor sponsor = entityManager.find(Sponsor.class, sponsorId);
 		player.setSponsor(sponsor);
