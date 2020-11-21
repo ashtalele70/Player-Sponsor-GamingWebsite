@@ -6,6 +6,8 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.List;
+
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "player")
@@ -32,6 +34,14 @@ public class Player {
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","sponsor",
     "players"})
   private Sponsor sponsor;
+
+  @ManyToMany
+  @JoinTable(name = "opponent",
+    joinColumns = { @JoinColumn(name = "id")},
+    inverseJoinColumns = { @JoinColumn(name = "opponent_id")})
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","sponsor",
+    "opponents"})
+  private List<Player> opponents;
 
   public long getId() {
 	return id;
@@ -79,5 +89,13 @@ public class Player {
 
   public void setSponsor(Sponsor sponsor) {
 	  this.sponsor = sponsor;
+  }
+
+  public List<Player> getOpponents() {
+    return opponents;
+  }
+
+  public void setOpponents(List<Player> opponents) {
+    this.opponents = opponents;
   }
 }
