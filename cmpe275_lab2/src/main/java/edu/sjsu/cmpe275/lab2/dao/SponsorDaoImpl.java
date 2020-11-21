@@ -48,6 +48,7 @@ public class SponsorDaoImpl implements SponsorDao {
 	@Override
 	public Sponsor deleteSponsor(Long id) {
 		Sponsor sponsor=entityManager.find(Sponsor.class, id);
+		if(sponsor==null) throw new SponsorNotFoundException("Sponsor not found");
 		List<Player> sponsoredPlayers=sponsor.getPlayers();
 		if (sponsoredPlayers !=null && !sponsoredPlayers.isEmpty()) {
 				sponsoredPlayers.forEach((player) -> player.setSponsor(null));
@@ -62,6 +63,7 @@ public class SponsorDaoImpl implements SponsorDao {
 	@Override
 	public Sponsor updateSponsor(Long id,String name, String description, String street, String city, String state, String zip) {
 		Sponsor sponsor=entityManager.find(Sponsor.class, id);
+		if(sponsor==null) throw new SponsorNotFoundException("Sponsor not found");
 		sponsor.setName(name);
 		sponsor.setDescription(description);
 		Address address=sponsor.getAddress();
