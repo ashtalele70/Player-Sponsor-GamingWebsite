@@ -47,10 +47,12 @@ public class PlayerDaoImpl implements PlayerDao {
 	}
 	
 	Query query = entityManager.createQuery("from Player where email =: email")
-			.setParameter("email", email);	
-	Player playerWithSameEmail = (Player) query.getSingleResult();
-	if(playerWithSameEmail != null) throw new PlayerEmailInvalidException("Email ID is already taken");
-	
+			.setParameter("email", email);
+	if(!query.getResultList().isEmpty() && query.getSingleResult() != null) {
+		Player playerWithSameEmail = (Player) query.getSingleResult();
+		if(playerWithSameEmail != null) throw new PlayerEmailInvalidException("Email ID is already taken");
+	}
+
 	player.setEmail(email);
 	Player dbPlayer = entityManager.merge(player);
 
@@ -77,8 +79,10 @@ public class PlayerDaoImpl implements PlayerDao {
 	
 	Query query = entityManager.createQuery("from Player where email =: email")
 			.setParameter("email", email);
-	Player playerWithSameEmail = (Player) query.getSingleResult();
-	if(playerWithSameEmail != null && playerWithSameEmail.getId() != id) throw new PlayerEmailInvalidException("Email ID is already taken");
+	if(!query.getResultList().isEmpty() && query.getSingleResult() != null) {
+		Player playerWithSameEmail = (Player) query.getSingleResult();
+		if(playerWithSameEmail != null && playerWithSameEmail.getId() != id) throw new PlayerEmailInvalidException("Email ID is already taken");
+	}
 	
 	player.setEmail(email);
 	Player dbPlayer = entityManager.merge(player);

@@ -1,9 +1,12 @@
 package edu.sjsu.cmpe275.lab2.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Address {
 
   @Column
