@@ -1,2 +1,2 @@
-# Player-Sponsor-GamingWebsite
+# ProGaming
 A mini gaming website
