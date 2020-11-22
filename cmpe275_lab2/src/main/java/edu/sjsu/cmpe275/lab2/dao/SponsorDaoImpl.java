@@ -1,5 +1,7 @@
 package edu.sjsu.cmpe275.lab2.dao;
 
+
+import edu.sjsu.cmpe275.lab2.exception.InvalidSponsorException;
 import edu.sjsu.cmpe275.lab2.exception.SponsorNotFoundException;
 import edu.sjsu.cmpe275.lab2.model.Address;
 import edu.sjsu.cmpe275.lab2.model.Player;
@@ -24,13 +26,14 @@ public class SponsorDaoImpl implements SponsorDao {
   @Override
 	public Sponsor getSponsorById(Long id) {
 		Sponsor sponsor = entityManager.find(Sponsor.class, id);
-		if(sponsor == null) throw new SponsorNotFoundException("Sponsor Not Found");
+		if(sponsor == null) throw new SponsorNotFoundException("Sponsor not found");
 		return sponsor;
 	}
 
 	@Override
 	public Sponsor createSponsor(String name, String description, String street,
 												 String city, String state, String zip) {
+		if(name.isEmpty()) throw new InvalidSponsorException("name cannot be empty");
 		Sponsor sponsor=new Sponsor();
 		Address address=new Address();
 		address.setStreet(street);
@@ -48,7 +51,7 @@ public class SponsorDaoImpl implements SponsorDao {
 	@Override
 	public Sponsor deleteSponsor(Long id) {
 		Sponsor sponsor=entityManager.find(Sponsor.class, id);
-		if(sponsor==null) throw new SponsorNotFoundException("Sponsor Not Found");
+		if(sponsor==null) throw new SponsorNotFoundException("Sponsor not found");
 		List<Player> sponsoredPlayers=sponsor.getPlayers();
 		if (sponsoredPlayers !=null && !sponsoredPlayers.isEmpty()) {
 				sponsoredPlayers.forEach((player) -> player.setSponsor(null));
@@ -62,8 +65,9 @@ public class SponsorDaoImpl implements SponsorDao {
 	
 	@Override
 	public Sponsor updateSponsor(Long id,String name, String description, String street, String city, String state, String zip) {
+		if(name.isEmpty()) throw new InvalidSponsorException("name cannot be empty");
 		Sponsor sponsor=entityManager.find(Sponsor.class, id);
-		if(sponsor==null) throw new SponsorNotFoundException("Sponsor Not Found");
+		if(sponsor==null) throw new SponsorNotFoundException("Sponsor not found");
 		sponsor.setName(name);
 		sponsor.setDescription(description);
 		Address address=sponsor.getAddress();
