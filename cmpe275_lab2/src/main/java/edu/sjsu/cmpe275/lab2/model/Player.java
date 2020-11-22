@@ -23,10 +23,10 @@ public class Player {
   @Column
   private String lastname;
 
-  @Column
+  @Column(unique = true)
   private String email;
 
-  @Column(nullable=true)
+  @Column(nullable = true)
   private String description;
 
   @ManyToOne

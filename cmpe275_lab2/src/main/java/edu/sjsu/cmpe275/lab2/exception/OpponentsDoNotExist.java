@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Opponents not found")
 public class OpponentsDoNotExist extends RuntimeException {
   public OpponentsDoNotExist(final String message) {
-
     super(message);
-    System.out.print(message);
   }
 }
