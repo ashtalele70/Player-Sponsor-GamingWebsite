@@ -37,7 +37,7 @@ public class Player {
 
   @ManyToMany
   @JoinTable(name = "opponent",
-    joinColumns = { @JoinColumn(name = "id")},
+    joinColumns = { @JoinColumn(name = "player_id")},
     inverseJoinColumns = { @JoinColumn(name = "opponent_id")})
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","sponsor",
     "opponents"})
