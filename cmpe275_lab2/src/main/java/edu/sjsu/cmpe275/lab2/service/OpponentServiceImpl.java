@@ -20,15 +20,15 @@ OpponentDao opponentDao;
 
 	@Override
 	@Transactional
-	public void deleteOpponent(Long id1, Long id2) {
-		opponentDao.deleteOpponent(id1, id2);
+	public String deleteOpponent(Long id1, Long id2) {
+	 return	opponentDao.deleteOpponent(id1, id2);
 		
 	}
 
 	@Override
 	@Transactional
-	public void addOpponent(Long id1, Long id2) {
-		opponentDao.addOpponent(id1, id2);
+	public String addOpponent(Long id1, Long id2) {
+		return opponentDao.addOpponent(id1, id2);
 		}
 	  
 }

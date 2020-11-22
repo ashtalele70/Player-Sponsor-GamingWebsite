@@ -30,7 +30,7 @@ public class OpponentDaoImpl implements OpponentDao {
 		}
 
 	@Override
-	public void deleteOpponent(Long id1, Long id2) {
+	public String deleteOpponent(Long id1, Long id2) {
 
 		Player player1 = entityManager.find(Player.class, id1);
 		Player player2 = entityManager.find(Player.class, id2);
@@ -56,11 +56,12 @@ public class OpponentDaoImpl implements OpponentDao {
 			query2.executeUpdate();
 		}
 	    }
+		return "Opponents deleted";
 		
 	}
 
 	@Override
-	public void addOpponent(Long id1, Long id2) {
+	public String addOpponent(Long id1, Long id2) {
 		
 		Player player1 = entityManager.find(Player.class, id1);
 		Player player2 = entityManager.find(Player.class, id2);
@@ -92,6 +93,7 @@ public class OpponentDaoImpl implements OpponentDao {
 	    		throw new OpponentsExistException("Opponents exist");
 	    }
 	    }
+		return "Opponents added";
 		
 	}
 	

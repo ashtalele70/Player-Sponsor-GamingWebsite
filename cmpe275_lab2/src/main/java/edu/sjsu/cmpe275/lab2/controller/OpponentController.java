@@ -22,15 +22,15 @@ public class OpponentController {
 	private OpponentService opponentService;
 	
 	@DeleteMapping("opponents/{id1}/{id2}")
-	  public void deleteOpponent(@PathVariable Long id1,@PathVariable Long id2) {
-		    opponentService.deleteOpponent(id1,id2);
+	  public String deleteOpponent(@PathVariable (required = true) Long id1,@PathVariable (required = true) Long id2) {
+		   return opponentService.deleteOpponent(id1,id2);
 	  }
 	  
 	  @PutMapping("opponents/{id1}/{id2}")
 	  @ResponseStatus(HttpStatus.OK)
-	  public void addOpponent(@PathVariable Long id1, @PathVariable Long id2) {
+	  public String addOpponent(@PathVariable (required = true) Long id1, @PathVariable (required = true) Long id2) {
 		 
-		    opponentService.addOpponent(id1,id2);
+		  return  opponentService.addOpponent(id1,id2);
 	  }
 
 	
