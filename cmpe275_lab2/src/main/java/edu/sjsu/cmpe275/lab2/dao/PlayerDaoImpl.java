@@ -23,6 +23,12 @@ public class PlayerDaoImpl implements PlayerDao {
     entityManager = theEntityManager;
   }
 
+  /**
+   * This is a method for getting player details by ID.
+   * 
+   * @param id id of the player
+   * @return   deep Player object
+   */
   @Override
   public Player getPlayerById(Long id) {
     Player player = entityManager.find(Player.class, id);
@@ -30,6 +36,17 @@ public class PlayerDaoImpl implements PlayerDao {
     return player;
   }
   
+  /**
+   * This is a method for creating a player.
+   * The first name, last name and email parameters are mandatory.
+   * 
+   * @param firstname   first name of the player
+   * @param lastname    last name of the player
+   * @param email       email ID of the player
+   * @param description description of the player
+   * @param sponsor     ID of an external sponsor for the player
+   * @return            deep copy of the created Player object
+   */
   @Override
   public Player createPlayer(String firstname, String lastname, String email, String description, Long sponsorId) {
 	
@@ -59,6 +76,17 @@ public class PlayerDaoImpl implements PlayerDao {
 	return dbPlayer;
   }
   
+  /**
+   * This is a method for updating a player.
+   * The first name, last name and email parameters are mandatory.
+   * 
+   * @param firstname   first name of the player
+   * @param lastname    last name of the player
+   * @param email       email ID of the player
+   * @param description description of the player
+   * @param sponsor     ID of an external sponsor for the player
+   * @return            deep copy of the updated Player object
+   */
   @Override
   public Player updatePlayer(Long id, String firstname, String lastname, String email, String description, Long sponsorId) {
 	if(firstname.isEmpty() || lastname.isEmpty() || email.isEmpty()) throw new InvalidPlayerException("Firstname, Lastname and Email cannot be empty");
@@ -90,6 +118,12 @@ public class PlayerDaoImpl implements PlayerDao {
 	return dbPlayer;
   }
   
+  /**
+   * This is a method for deleting a player.
+   * 
+   * @param id id of the player to be deleted
+   * @return   deep copy of the deleted Player object
+   */
   @Override
   public Player deletePlayer(Long id) {
 

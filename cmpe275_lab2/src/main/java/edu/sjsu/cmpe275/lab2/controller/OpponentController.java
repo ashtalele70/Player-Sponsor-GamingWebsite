@@ -27,8 +27,7 @@ public class OpponentController {
 	  * @param id1 id of player 1
 	  * @param id2 id of player 2
 	  * @return    success text message
-	  * @throws    PlayerNotFoundException if either player does not exist 
-	  * @throws    OpponentDoNotExistException if the two players are not opponents
+	  * 
 	  */
 	  @DeleteMapping("opponents/{id1}/{id2}")
 	  public String deleteOpponent(@PathVariable (required = true) Long id1,@PathVariable (required = true) Long id2) {
@@ -41,8 +40,7 @@ public class OpponentController {
 	  * @param id1 id of player 1
 	  * @param id2 id of player 2
 	  * @return    success text message
-	  * @throws    PlayerNotFoundException if either player does not exist 
-	  * @throws    OpponentExistException if the two players are already opponents
+	  * 
 	  */
 	  @PutMapping("opponents/{id1}/{id2}")
 	  @ResponseStatus(HttpStatus.OK)

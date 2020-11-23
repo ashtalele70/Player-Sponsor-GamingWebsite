@@ -23,13 +23,34 @@ public class SponsorDaoImpl implements SponsorDao {
   public SponsorDaoImpl(EntityManager theEntityManager) {
 		entityManager = theEntityManager;
 	}
+  
+  /**
+   * This is a method for getting sponsor details by ID.
+   * 
+   * @param id id of the sponsor
+   * @return   deep Sponsor object
+   * 
+   */
   @Override
 	public Sponsor getSponsorById(Long id) {
 		Sponsor sponsor = entityManager.find(Sponsor.class, id);
 		if(sponsor == null) throw new SponsorNotFoundException("Sponsor not found");
 		return sponsor;
 	}
-
+  
+  /**
+   * This is a method for creating a sponsor.
+   * The name parameter is mandatory.
+   * 
+   * @param name        name of the sponsor
+   * @param description description of the sponsor
+   * @param street      sponsor's street address
+   * @param city        sponsor's city
+   * @param state       sponsor's state
+   * @param zip         sponsor's zipcode
+   * @return            deep copy of the created Sponsor object
+   * 
+   */
 	@Override
 	public Sponsor createSponsor(String name, String description, String street,
 												 String city, String state, String zip) {
@@ -48,6 +69,13 @@ public class SponsorDaoImpl implements SponsorDao {
 		return dbSponsor;
 	}
 
+	 /**
+	  * This is a method for deleting a sponsor.
+	  * 
+	  * @param id id of the sponsor
+	  * @return   deep copy of the deleted Sponsor object
+	  * 
+	  */
 	@Override
 	public Sponsor deleteSponsor(Long id) {
 		Sponsor sponsor=entityManager.find(Sponsor.class, id);
@@ -63,6 +91,19 @@ public class SponsorDaoImpl implements SponsorDao {
 		return sponsor;
 	}
 	
+	/**
+	   * This is a method for updating a sponsor.
+	   * The name parameter is mandatory.
+	   * 
+	   * @param name        name of the sponsor
+	   * @param description description of the sponsor
+	   * @param street      sponsor's street address
+	   * @param city        sponsor's city
+	   * @param state       sponsor's state
+	   * @param zip         sponsor's zipcode
+	   * @return            deep copy of the updated Sponsor object
+	   * 
+	   */
 	@Override
 	public Sponsor updateSponsor(Long id,String name, String description, String street, String city, String state, String zip) {
 		if(name.isEmpty()) throw new InvalidSponsorException("name cannot be empty");

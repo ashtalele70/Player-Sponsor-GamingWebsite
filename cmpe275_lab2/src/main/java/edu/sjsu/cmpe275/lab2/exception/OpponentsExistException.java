@@ -5,7 +5,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Opponents exist")
 public class OpponentsExistException extends RuntimeException {
-  public OpponentsExistException(final String message) {
-    super(message);
-  }
+	/**
+	 * 
+	 * @param message Opponents exist
+	 */
+	public OpponentsExistException(final String message) {
+		super(message);
+	}
 }

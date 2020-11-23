@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason="name cannot be empty")
 public class InvalidSponsorException extends RuntimeException{
-	
+	/**
+	 * 
+	 * @param message invalid sponsor message
+	 */
 	public InvalidSponsorException(final String message) {
 		
 		super(message);

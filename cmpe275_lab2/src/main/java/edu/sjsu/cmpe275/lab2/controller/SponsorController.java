@@ -22,7 +22,7 @@ public class SponsorController {
   * 
   * @param id id of the sponsor
   * @return   deep Sponsor object
-  * @throws   SponsorNotFoundException if sponsor does not exist
+  * 
   */
   @GetMapping("/sponsor/{id}")
   public Sponsor getSponsorById(@PathVariable Long id){
@@ -40,7 +40,7 @@ public class SponsorController {
   * @param state       sponsor's state
   * @param zip         sponsor's zipcode
   * @return            deep copy of the created Sponsor object
-  * @throws            InvalidSponsorException if there are missing request parameters
+  * 
   */
   @PostMapping("/sponsor")
   public Sponsor createSponsor(@RequestParam("name") String name, @RequestParam(name="description", required=false)
@@ -54,7 +54,7 @@ public class SponsorController {
   * 
   * @param id id of the sponsor
   * @return   deep copy of the deleted Sponsor object
-  * @throws   SponsorNotFoundException if the sponsor does not exist
+  * 
   */
   @DeleteMapping("/sponsor/{id}")
   public Sponsor deleteSponsor(@PathVariable Long id) {
@@ -72,8 +72,7 @@ public class SponsorController {
    * @param state       sponsor's state
    * @param zip         sponsor's zipcode
    * @return            deep copy of the updated Sponsor object
-   * @throws            InvalidSponsorException if there are missing request parameters
-   * @throws            SponsorNotFoundException if sponsor does not exist
+   * 
    */
   @PutMapping("/sponsor/{id}")
   public Sponsor updateSponsor(@PathVariable Long id,@RequestParam("name") String name,@RequestParam(name="description", required=false) String description,
