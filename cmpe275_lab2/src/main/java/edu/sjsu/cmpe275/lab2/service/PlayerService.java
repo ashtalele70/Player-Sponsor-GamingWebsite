@@ -10,5 +10,5 @@ public interface PlayerService {
   
   public Player updatePlayer(Long id, String firstname, String lastname, String email, String description, Long sponsorId);
   
-  public void deletePlayer(Long id);
+  public Player deletePlayer(Long id);
 }

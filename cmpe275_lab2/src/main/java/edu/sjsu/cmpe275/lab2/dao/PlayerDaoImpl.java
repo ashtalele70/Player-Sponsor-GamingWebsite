@@ -91,12 +91,14 @@ public class PlayerDaoImpl implements PlayerDao {
   }
   
   @Override
-  public void deletePlayer(Long id) {
-	  
-	Player player = getPlayerById(id);
-	if(player == null) throw new PlayerNotFoundException("Player Not Found");
-	Query query = entityManager.createQuery("delete from Player where id =: id")
-			.setParameter("id", id);
-	query.executeUpdate();
+  public Player deletePlayer(Long id) {
+
+		Player player = getPlayerById(id);
+		if(player == null) throw new PlayerNotFoundException("Player Not Found");
+		Query query = entityManager.createQuery("delete from Player where id =: id")
+				.setParameter("id", id);
+				query.executeUpdate();
+
+			return player;
   }
 }

@@ -11,5 +11,5 @@ public interface PlayerDao {
   
   Player updatePlayer(Long id, String firstname, String lastname, String email, String description, Long sponsorId);
   
-  void deletePlayer(Long id);
+  Player deletePlayer(Long id);
 }

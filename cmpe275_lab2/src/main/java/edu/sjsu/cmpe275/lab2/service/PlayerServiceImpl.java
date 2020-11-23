@@ -32,7 +32,7 @@ public class PlayerServiceImpl implements PlayerService {
   
   @Override
   @Transactional
-  public void deletePlayer(Long id) {
-	  playerDao.deletePlayer(id);
+  public Player deletePlayer(Long id) {
+	  return playerDao.deletePlayer(id);
   }
 }
